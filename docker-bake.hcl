@@ -3,19 +3,19 @@ group "default" {
 }
 
 target "amd64" {
-  output = ["bin-amd64"]
+  output = ["release"]
   platforms = ["amd64"]
   target = "guibinaries"
 }
 
 target "arm64" {
-  output = ["bin-arm64"]
+  output = ["release"]
   platforms = ["arm64"]
   target = "binaries"
 }
 
 target "armhf" {
-  output = ["bin-armhf"]
+  output = ["release"]
   platforms = ["armhf"]
   target = "binaries"
 }
