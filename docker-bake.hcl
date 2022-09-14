@@ -11,11 +11,11 @@ target "amd64" {
 target "arm64" {
   output = ["release"]
   platforms = ["arm64"]
-  target = "binaries"
+  target = "guibinaries"
 }
 
 target "armhf" {
   output = ["release"]
   platforms = ["armhf"]
-  target = "binaries"
+  target = "guibinaries"
 }
