@@ -7,12 +7,10 @@ RUN apt install -yq "ocaml-compiler-libs=4.05.*"
 
 WORKDIR /src
 ARG unison_ver
-RUN apt install -yq ca-certificates
-RUN uname -a
 RUN wget https://github.com/bcpierce00/unison/archive/refs/tags/v$unison_ver.tar.gz -O - | tar xvzf - --strip-components=1
 RUN make UISTYLE=text NATIVE=true STATIC=true
-ARG TARGETARCH
 RUN strip src/unison-fsmonitor src/unison
+ARG TARGETARCH
 RUN mv src/unison-fsmonitor ./unison-fsmonitor.$unison_ver-$TARGETARCH
 RUN mv src/unison ./unison.$unison_ver-$TARGETARCH
 
@@ -27,6 +25,7 @@ ARG unison_ver
 ARG TARGETARCH
 RUN apt install -yq liblablgtk2-ocaml-dev
 RUN make -C src UISTYLE=gtk2
+RUN strip src/unison
 RUN mv src/unison unison-gui.$unison_ver-$TARGETARCH
 
 FROM binaries as guibinaries
